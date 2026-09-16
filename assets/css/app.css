@@ -1,0 +1,151 @@
+:root {
+	--brand-color: #2c5f7c;
+	--brand-dark: #1d4457;
+	--sidebar-width: 230px;
+}
+
+body {
+	background-color: #f4f6f9;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	padding-top: 56px;
+}
+
+/* Navbar */
+.app-navbar {
+	background-color: var(--brand-dark);
+	box-shadow: 0 1px 4px rgba(0,0,0,.15);
+	z-index: 1030;
+}
+
+/* Layout */
+.app-wrapper {
+	display: flex;
+	min-height: calc(100vh - 56px);
+}
+
+.app-sidebar {
+	width: var(--sidebar-width);
+	background-color: #fff;
+	border-right: 1px solid #e3e6ea;
+	min-height: calc(100vh - 56px);
+	flex-shrink: 0;
+}
+
+.app-sidebar .nav-link {
+	color: #495057;
+	padding: .55rem 1.2rem;
+	font-size: .92rem;
+	border-left: 3px solid transparent;
+}
+
+.app-sidebar .nav-link:hover {
+	background-color: #f1f5f8;
+	color: var(--brand-color);
+}
+
+.app-sidebar .nav-link.active {
+	background-color: #eaf2f6;
+	color: var(--brand-color);
+	border-left: 3px solid var(--brand-color);
+	font-weight: 600;
+}
+
+.sidebar-heading {
+	font-size: .72rem;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	color: #9aa5b1;
+	padding: 1rem 1.2rem .3rem;
+}
+
+.app-content {
+	flex-grow: 1;
+	padding: 1.5rem;
+	min-width: 0;
+}
+
+.app-footer {
+	font-size: .85rem;
+	border-top: 1px solid #e3e6ea;
+}
+
+/* Cards */
+.card {
+	border: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,.08);
+	border-radius: .5rem;
+}
+
+.card-header {
+	background-color: #fff;
+	border-bottom: 1px solid #eef0f2;
+	font-weight: 600;
+}
+
+.stat-card {
+	border-radius: .5rem;
+	color: #fff;
+	padding: 1.25rem;
+}
+
+.stat-card h3 { margin-bottom: 0; font-weight: 700; }
+.stat-card small { opacity: .85; }
+
+.bg-brand { background-color: var(--brand-color); }
+
+/* Login page */
+.login-wrapper {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, var(--brand-dark), var(--brand-color));
+	padding-top: 0;
+}
+
+.login-card {
+	max-width: 380px;
+	width: 100%;
+	border-radius: .75rem;
+	overflow: hidden;
+}
+
+.login-card .card-header {
+	background-color: var(--brand-color);
+	color: #fff;
+	text-align: center;
+	padding: 1.5rem;
+}
+
+/* Timeline for status log */
+.timeline { list-style: none; padding-left: 0; }
+.timeline li {
+	position: relative;
+	padding-left: 1.75rem;
+	padding-bottom: 1.1rem;
+	border-left: 2px solid #e3e6ea;
+	margin-left: .5rem;
+}
+.timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline li::before {
+	content: '';
+	position: absolute;
+	left: -6.5px;
+	top: 2px;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background-color: var(--brand-color);
+}
+
+@media (max-width: 767.98px) {
+	.app-sidebar {
+		position: fixed;
+		left: -100%;
+		top: 56px;
+		z-index: 1020;
+		transition: left .2s ease-in-out;
+		box-shadow: 2px 0 8px rgba(0,0,0,.1);
+	}
+	.app-sidebar.show { left: 0; }
+}

@@ -1,0 +1,27 @@
+# ============================================================
+# .htaccess OPSIONAL untuk CodeIgniter 3 - URL bersih tanpa index.php
+# ============================================================
+# File ini TIDAK AKTIF secara default (aplikasi sudah berjalan normal
+# tanpa file ini, karena application/config/config.php sudah diset
+# menggunakan skema URL: index.php/nama-controller/method).
+#
+# Jika Anda ingin URL tanpa "index.php" (misal: /pemesanan bukan
+# /index.php/pemesanan), ikuti langkah berikut:
+#
+# 1. Pastikan module mod_rewrite Apache sudah aktif (di XAMPP, cek
+#    httpd.conf: baris "LoadModule rewrite_module modules/mod_rewrite.so"
+#    tidak boleh diberi tanda pagar/komentar).
+# 2. Pastikan AllowOverride di httpd.conf untuk folder htdocs diset "All".
+# 3. Ganti application/config/config.php:
+#       $config['index_page'] = '';
+# 4. Restart Apache, lalu tes salah satu halaman, contoh: /login
+#
+# Jika langkah di atas terasa rumit atau tidak yakin dengan konfigurasi
+# server Anda, LEBIH AMAN biarkan pengaturan default (index_page =
+# 'index.php') seperti yang sudah dikirim - aplikasi akan tetap
+# berfungsi 100% normal, hanya saja URL akan menyertakan "index.php".
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
